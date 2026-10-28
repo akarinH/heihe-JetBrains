@@ -1,0 +1,145 @@
+/* 由 GoLand 当前配色替换占位符；只调整网页界面，图片和视频不使用反色滤镜。 */
+:root {
+  color-scheme: dark !important;
+  --hh-bg: __BG__;
+  --hh-panel: __PANEL__;
+  --hh-text: __TEXT__;
+  --hh-muted: __MUTED__;
+  --hh-border: __BORDER__;
+  --hh-link: __LINK__;
+  --hh-dim-color: transparent;
+  --hb-primary-dynamic: var(--hh-text) !important;
+  --hb-general-color-primary: var(--hh-text) !important;
+  --hb-general-color-text-1: var(--hh-text) !important;
+  --hb-general-color-text-2: var(--hh-muted) !important;
+  --hb-general-color-text-3: var(--hh-muted) !important;
+  --hb-general-color-text-4: var(--hh-muted) !important;
+  --hb-general-color-text-5: var(--hh-link) !important;
+  --hb-general-color-stroke-0: var(--hh-border) !important;
+  --hb-general-color-stroke-1: var(--hh-border) !important;
+  --hb-general-color-stroke-2: var(--hh-border) !important;
+  --hb-general-color-stroke-3: var(--hh-border) !important;
+  --hb-general-color-bg-0: var(--hh-border) !important;
+  --hb-general-color-bg-1: var(--hh-panel) !important;
+  --hb-general-color-bg-2: var(--hh-bg) !important;
+  --hb-general-color-bg-3: var(--hh-panel) !important;
+  --hb-general-color-bg-4: var(--hh-panel) !important;
+  --hb-general-color-bg-5: var(--hh-panel) !important;
+  --hb-general-color-bg-6: var(--hh-border) !important;
+  --color-primary-black: var(--hh-text) !important;
+  --color-font-1: var(--hh-text) !important;
+  --color-font-2: var(--hh-text) !important;
+  --color-font-3: var(--hh-muted) !important;
+  --color-font-4: var(--hh-muted) !important;
+  --color-font-5: var(--hh-link) !important;
+  --el-color-primary: var(--hh-link) !important;
+  --el-bg-color: var(--hh-panel) !important;
+  --el-bg-color-page: var(--hh-bg) !important;
+  --el-bg-color-overlay: var(--hh-panel) !important;
+  --el-text-color-primary: var(--hh-text) !important;
+  --el-text-color-regular: var(--hh-text) !important;
+  --el-text-color-secondary: var(--hh-muted) !important;
+  --el-text-color-placeholder: var(--hh-muted) !important;
+  --el-border-color: var(--hh-border) !important;
+  --el-border-color-light: var(--hh-border) !important;
+  --el-border-color-lighter: var(--hh-border) !important;
+  --el-border-color-extra-light: var(--hh-border) !important;
+  --el-fill-color: var(--hh-border) !important;
+  --el-fill-color-light: var(--hh-panel) !important;
+  --el-fill-color-lighter: var(--hh-panel) !important;
+  --el-fill-color-extra-light: var(--hh-panel) !important;
+  --el-fill-color-blank: var(--hh-panel) !important;
+  --el-mask-color: var(--hh-panel) !important;
+}
+
+html, body, #app {
+  background-color: var(--hh-bg) !important;
+  color: var(--hh-text) !important;
+}
+
+/* 顶部导航有组件私有颜色变量，不能只替换全局 --hb-general-*。 */
+.nav {
+  --nav-background: var(--hh-panel) !important;
+  --nav-shadow: none !important;
+  --nav-link-color: var(--hh-muted) !important;
+  --nav-link-hover-color: var(--hh-text) !important;
+  --nav-link-active-color: var(--hh-text) !important;
+  --nav-user-bg: var(--hh-bg) !important;
+  --nav-user-bg-hover: var(--hh-border) !important;
+  --nav-user-divider-color: var(--hh-border) !important;
+  --nav-user-name-color: var(--hh-text) !important;
+  --nav-user-arrow-color: var(--hh-muted) !important;
+  --nav-logo-color: var(--hh-text) !important;
+  --nav-language-color: var(--hh-muted) !important;
+  --nav-language-border-color: var(--hh-border) !important;
+}
+
+/* 插件用于阅读帖子，隐藏顶部发布入口，保留登录与社区导航。 */
+.nav .publish-btn { display: none !important; }
+
+/* 原站导航前两项为首页、社区，其后五项是截图中不需要的推广入口。 */
+.nav .nav-links > .nav-link:nth-child(n + 3):nth-child(-n + 7) { display: none !important; }
+
+/* 分页遮罩只替换组件自己的白色渐变，保留图片和品牌渐变。 */
+.hb-cpt__pagination .hb-cpt__pagination--left {
+  background: linear-gradient(to right, var(--hh-panel), var(--hh-panel), transparent) !important;
+}
+.hb-cpt__pagination .hb-cpt__pagination--right {
+  background: linear-gradient(to left, var(--hh-panel), var(--hh-panel), transparent) !important;
+}
+.link-reply__emoji-box.blur::after {
+  background: linear-gradient(to top, var(--hh-panel), transparent) !important;
+}
+
+/* 详情标题还有一层独立背景，必须连内层一起覆盖。 */
+.hb-cpt-page-header,
+.hb-cpt-page-header .page-header__container .page-header__container-bg {
+  background-color: var(--hh-panel) !important;
+}
+.hb-cpt-page-header .page-header__container .page-header__back-btn {
+  color: var(--hh-text) !important;
+}
+
+/* 游戏标签把服务端的浅色背景和文字写入行内 style，需成对覆盖保证可读。 */
+.hb-cpt__content-tag {
+  background: var(--hh-border) !important;
+}
+.hb-cpt__content-tag .content-tag-text {
+  color: var(--hh-text) !important;
+}
+
+/* 原站把滚动边缘遮罩渲染为独立行内样式节点，CSSOM 扫描不会处理它们。 */
+.layout-normal [data-mask-frame] [data-mask="top-bg"],
+.layout-normal [data-mask-frame] [data-mask="bottom-bg"] {
+  background-color: var(--hh-bg) !important;
+}
+.layout-normal [data-mask-frame] [data-mask="top-edge"],
+.layout-normal [data-mask-frame] [data-mask="bottom-edge"] {
+  background-color: var(--hh-panel) !important;
+}
+
+/* 原站桌面容器最窄 800px；窄工具窗口保留信息流，热门社区沿用原站隐藏规则。 */
+#app { min-width: 0 !important; }
+#app main { min-width: 0 !important; box-sizing: border-box; }
+#page-bbs-community { width: 100% !important; }
+#page-bbs-community .content { min-width: 0 !important; }
+#page-bbs-community .list { min-width: 0 !important; }
+
+@media (max-width: 800px) {
+  #app main { padding-left: 8px; padding-right: 8px; }
+  #page-bbs-community .content > .right { display: none !important; }
+  #page-bbs-community .content > .list { width: 100% !important; max-width: none !important; }
+  .hb-bbs-home .bbs-home__content-list { padding-left: 8px !important; padding-right: 8px !important; }
+}
+
+/* 原站窄屏按触屏隐藏箭头；IDE仍用鼠标，恢复原按钮并取消移出图片边缘的动画。 */
+@media (max-width: 460px) {
+  .image-text__header-image .header-image__container .header-image__hover-container .header-image__left-btn,
+  .image-text__header-image .header-image__container .header-image__hover-container .header-image__right-btn {
+    display: block !important;
+    transform: none !important;
+  }
+}
+
+input, textarea { caret-color: var(--hh-text); }
+::selection { background: var(--hh-link); color: var(--hh-bg); }

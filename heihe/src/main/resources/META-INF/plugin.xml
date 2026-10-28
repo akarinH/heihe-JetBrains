@@ -1,0 +1,17 @@
+<idea-plugin>
+    <id>cn.local.heihei</id>
+    <name>heihe</name>
+    <version>0.1.6</version>
+    <vendor>heihe</vendor>
+    <description><![CDATA[
+        在 IntelliJ IDEA / GoLand 2024.1.x 工具窗口中浏览小黑盒社区，支持暗色网页、便捷滚动和可调遮罩。
+    ]]></description>
+    <idea-version since-build="241" until-build="241.*"/>
+    <depends>com.intellij.modules.platform</depends>
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="小黑盒"
+                    anchor="right"
+                    icon="/icons/heihei.svg"
+                    factoryClass="cn.local.heihei.HeiHeiToolWindowFactory"/>
+    </extensions>
+</idea-plugin>

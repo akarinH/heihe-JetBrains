@@ -1,0 +1,25 @@
+/* 固定槽宽避免悬停时挤动页面，透明边框让滑块可见宽度由4px变成10px。 */
+::-webkit-scrollbar { width: 14px; height: 14px; }
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+  background: var(--hh-bg, #2b2b2b) !important;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--hh-border, #55585c) !important;
+  background-clip: padding-box !important;
+  border: 5px solid transparent;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--hh-muted, #8b9198) !important;
+  background-clip: padding-box !important;
+  border-width: 2px;
+}
+::-webkit-scrollbar-button { display: none; width: 0; height: 0; }
+
+/* 内部滚动条已在网页遮罩下，只有视口滚动条需要再单独覆盖同值面板色。 */
+:root::-webkit-scrollbar-track,
+:root::-webkit-scrollbar-thumb,
+:root::-webkit-scrollbar-corner {
+  background-image: linear-gradient(var(--hh-dim-color), var(--hh-dim-color)) !important;
+}
